@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="author" content="Florian Georg">
 
   <title>Service Assistant - Demo</title>
 
@@ -25,6 +25,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/new-age.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
 
 
 
@@ -35,7 +36,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">Welcome to our Service Assistant</a>
+      <a class="navbar-brand js-scroll-trigger" href="#page-top">Welcome to Baloise X-Days</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
         data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
         aria-label="Toggle navigation">
@@ -45,7 +46,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#download">Download</a>
+            <a class="nav-link js-scroll-trigger" href="#download">Chat</a>
           </li>
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="#features">Features</a>
@@ -63,7 +64,7 @@
       <div class="row h-100">
         <div class="col-lg-7 my-auto">
           <div class="header-content mx-auto">
-            <h1 class="mb-5">This is a BizDevOps demo using IBM Watson Assistant and Red Hat Openshift on IBM Cloud
+            <h1 class="mb-5">This is a demo using IBM Watson Assistant and Red Hat Openshift on IBM Cloud
             </h1>
             <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Chat with our bot</a>
           </div>
@@ -89,30 +90,42 @@
 
   <section class="download bg-primary text-center" id="download">
     <div class="container">
+
+
+<!-- ROW with Chatlog-->
+
       <div class="row">
-        <div class="col-md-8 mx-auto">
-          <h2 class="section-heading">How can I help you ?</h2>
-          
-
-          <form class="form">
-            <div class="form-group">
-              <input type="text" class="form-control" id="message" placeholder="Please ask me something">
-              <p></p>
-              <input id="submitBtn" type="button" class="btn btn-primary" value="Submit"></input>
-              <input type="hidden" id="sessionId" value=""></input>
-              <input type="hidden" id="context" value=""></input>
-              <a class="btn btn-outline"
-                href="https://assistant-chat-eu-de.watsonplatform.net/web/public/92cea4dd-3b3d-4cb8-8460-920e0fe78be3">...</a>
+        <div id="chatlog-row" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 addScroll">
+          <div class="card bg-primary mb-3">
+            <div class="card-header">Chat</div>
+            <div class="card-body height3">
+              <ul id="chat-list" class="chat-list">
+                
+              </ul>
             </div>
-
-            <div id="chatlog">
-                ...
-              </div>
-
-          </form>
+          </div>
         </div>
       </div>
+<!-- ROW with input-->
+      <div class="row">
+          <div class="col-md-8 mx-auto">
+            <hr>
+  
+            <form class="form">
+              <div class="form-group">
+                <input type="text" class="form-control" id="message" placeholder="Please ask me something">
+                <p></p>
+                <!-- <input id="submitBtn" type="button" class="btn btn-primary" value="Submit"></input> -->
+                <input type="hidden" id="sessionId" value=""></input>
+                <input type="hidden" id="context" value=""></input>
+                <a class="btn btn-outline"
+                  href="https://assistant-chat-eu-de.watsonplatform.net/web/public/92cea4dd-3b3d-4cb8-8460-920e0fe78be3">...</a>
+              </div>
+            </form>
+          </div>
+        </div>
     </div>
+ 
   </section>
 
   <section class="features" id="features">
@@ -215,7 +228,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; Your Website 2019. All Rights Reserved.</p>
+      <p>&copy; 2019. All Rights Reserved.</p>
       <ul class="list-inline">
         <li class="list-inline-item">
           <a href="#">Privacy</a>
@@ -247,13 +260,19 @@
 
 
       var handler = function (event) {
-        if (event){
+        if (event) {
           event.preventDefault();
         }
 
         var text = $('#message').val()
         //var sessionId = $('#sessionId').val("")
-        $("#chatlog").html("<div class='badge'>...</div>");
+        //$("#chatlog").html("<div class='badge badge-primary'>...</div>");
+        var in_template = $('#in-template').html().replace('$TEXT', text)
+        console.log(in_template)
+        if (text != ""){
+          $("#chat-list").append(in_template).show('slow');;
+        }
+ 
 
         $.ajax({
           url: "/api/message",
@@ -269,33 +288,69 @@
             //var sessionId = data.session_id;
             //var context = data.context;
 
-            console.log(response)
-            $("#chatlog").html(response);
+            var out_template = $('#out-template').html().replace('$TEXT', response)
+            console.log(response, out_template)
+
+            $("#chat-list").append(out_template).show('slow');
+
             //$("#sessionId").val (sessionId);
             $('#message').val("");
+            var r = $("#chatlog-row")
+            height = r[0].scrollHeight;
+            r.scrollTop(height);
+
           },
           error: function (xhr, status) {
             alert("Sorry, there was a problem!");
           },
           complete: function (xhr, status) {
-            //$('#chatlog').slideDown('slow')
+            $('#chatlog').slideDown('slow')
           }
         });
       };
-    
 
 
-    $('#submitBtn').click(handler);
-    $(document).on('keypress',function(e) {
-      if(e.which == 13) {
-        handler (e)
-      }
-    });
 
-    // initial submit without text (for welcome message)
-    handler()
+      $('#submitBtn').click(handler);
+      $(document).on('keypress', function (e) {
+        if (e.which == 13) {
+          handler(e)
+        }
+      });
+
+      // initial submit without text (for welcome message)
+      handler()
     });
   </script>
+
+
+<script id="in-template" type="text/x-custom-template">
+
+  <li class="in">
+      <div class="chat-body">
+        <div class="chat-message">
+          <h4>$TEXT</h4>
+        </div>
+      </div>
+    </li>
+
+</script>
+
+<script id="out-template" type="text/x-custom-template">
+ 
+  <li class="out">
+      <!-- <div class="chat-img">
+        <img alt="Avtar" src="https://bootdey.com/img/Content/avatar/avatar6.png">
+      </div> -->
+      <div class="chat-body">
+        <div class="chat-message">
+          <h4>$TEXT</h4>
+        </div>
+      </div>
+    </li>
+
+</script>
+
 
 </body>
 
