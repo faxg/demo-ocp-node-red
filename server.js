@@ -27,7 +27,10 @@ var server = http.createServer(app);
 var settings = {
     httpAdminRoot:"/red",
     httpNodeRoot: "/api",
-    userDir:".nodered/",
+    userDir:"workspace/",
+    credentialSecret:"8412",
+    flowFile: "flows.json",
+    ui: { path: "ui" },
     functionGlobalContext: { }    // enables global context
 };
 

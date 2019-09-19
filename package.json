@@ -13,6 +13,7 @@
 		"mongodb": "^2.1.16",
 		"morgan": "^1.7.0",
 		"node-red": "^0.20.8",
+		"node-red-node-watson": "^0.7.8",
 		"object-assign": "4.1.0"
 	},
 	"engine": {

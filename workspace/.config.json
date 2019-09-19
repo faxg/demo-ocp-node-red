@@ -466,7 +466,204 @@
      "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-twitter/27-twitter.js"
     }
    }
+  },
+  "node-red-node-watson": {
+   "name": "node-red-node-watson",
+   "version": "0.7.8",
+   "local": false,
+   "nodes": {
+    "watson-conversation-v1": {
+     "name": "watson-conversation-v1",
+     "types": [
+      "watson-conversation-v1"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/assistant/v1.js"
+    },
+    "watson-conversation-workspace-manager-v1": {
+     "name": "watson-conversation-workspace-manager-v1",
+     "types": [
+      "watson-conversation-v1-workspace-manager"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/assistant/v1-workspace-manager.js"
+    },
+    "watson-assistant-v2": {
+     "name": "watson-assistant-v2",
+     "types": [
+      "watson-assistant-v2"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/assistant/v2.js"
+    },
+    "watson-discovery-v1": {
+     "name": "watson-discovery-v1",
+     "types": [
+      "watson-discovery-v1"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/discovery/v1.js"
+    },
+    "watson-discovery-v1-document-loader": {
+     "name": "watson-discovery-v1-document-loader",
+     "types": [
+      "watson-discovery-v1-document-loader"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/discovery/v1-document-loader.js"
+    },
+    "watson-discovery-v1-query-builder": {
+     "name": "watson-discovery-v1-query-builder",
+     "types": [
+      "watson-discovery-v1-query-builder"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/discovery/v1-query-builder.js"
+    },
+    "watson-language-translator-v3": {
+     "name": "watson-language-translator-v3",
+     "types": [
+      "watson-translator"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/language_translator/v3.js"
+    },
+    "watson-doc-translator-v3": {
+     "name": "watson-doc-translator-v3",
+     "types": [
+      "watson-doc-translator"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/language_translator/v3-doc.js"
+    },
+    "watson-language-translator-identify-v3": {
+     "name": "watson-language-translator-identify-v3",
+     "types": [
+      "watson-language-translator-identify"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/language_translator_identify/v3.js"
+    },
+    "watson-language-translator-util-v3": {
+     "name": "watson-language-translator-util-v3",
+     "types": [
+      "watson-translator-util"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/language_translator_util/v3.js"
+    },
+    "watson-natural-language-classifier-v1": {
+     "name": "watson-natural-language-classifier-v1",
+     "types": [
+      "watson-natural-language-classifier"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/natural_language_classifier/v1.js"
+    },
+    "watson-natural-language-understanding-v1": {
+     "name": "watson-natural-language-understanding-v1",
+     "types": [
+      "natural-language-understanding"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/natural_language_understanding/v1.js"
+    },
+    "watson-personality-insights-v3": {
+     "name": "watson-personality-insights-v3",
+     "types": [
+      "watson-personality-insights-v3"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/personality_insights/v3.js"
+    },
+    "watson-speech-to-text-v1": {
+     "name": "watson-speech-to-text-v1",
+     "types": [
+      "watson-speech-to-text"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/speech_to_text/v1.js"
+    },
+    "watson-speech-to-text-corpus-builder-v1": {
+     "name": "watson-speech-to-text-corpus-builder-v1",
+     "types": [
+      "watson-speech-to-text-v1-query-builder"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/speech_to_text/v1-corpus-builder.js"
+    },
+    "watson-text-to-speech-v1": {
+     "name": "watson-text-to-speech-v1",
+     "types": [
+      "watson-text-to-speech"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/text_to_speech/v1.js"
+    },
+    "watson-text-to-speech-corpus-builder-v1": {
+     "name": "watson-text-to-speech-corpus-builder-v1",
+     "types": [
+      "watson-text-to-speech-v1-query-builder"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/text_to_speech/v1-corpus-builder.js"
+    },
+    "watson-tone-analyzer-v3": {
+     "name": "watson-tone-analyzer-v3",
+     "types": [
+      "watson-tone-analyzer-v3"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/tone_analyzer/v3.js"
+    },
+    "watson-visual-recognition-v3": {
+     "name": "watson-visual-recognition-v3",
+     "types": [
+      "visual-recognition-v3",
+      "visual-recognition-util-v3"
+     ],
+     "enabled": true,
+     "local": false,
+     "module": "node-red-node-watson",
+     "file": "/Users/florian/Documents/repositories/openshift-wa-demo/demo-ocp-node-red/node_modules/node-red-node-watson/services/visual_recognition/v3.js"
+    }
+   }
   }
- },
- "_credentialSecret": "32c28e2d27dac43c87b878334c0954fc148aa19e3ff09ddfc5413963f606f6a2"
+ }
 }
