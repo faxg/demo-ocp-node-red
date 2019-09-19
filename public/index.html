@@ -26,39 +26,7 @@
   <!-- Custom styles for this template -->
   <link href="css/new-age.min.css" rel="stylesheet">
 
-  <script language="javascript">
-    function submit_message() {
 
-      var text = $('#message').val()
-
-
-      $('#submit').click(function () {
-        $.ajax({
-          url: "/api/message",
-          data: {
-            text: text
-          },
-          type: "GET",
-          dataType: "json",
-          success: function (data) {
-            var response = data.output.generic[0].text;
-            console.log (response)
-            $("#chatlog").html(response);
-            $('#message').val("");
-          },
-          error: function (xhr, status) {
-            alert("Sorry, there was a problem!");
-          },
-          complete: function (xhr, status) {
-            //$('#showresults').slideDown('slow')
-          }
-        });
-      });
-
-
-
-    }
-  </script>
 
 </head>
 
@@ -124,19 +92,22 @@
       <div class="row">
         <div class="col-md-8 mx-auto">
           <h2 class="section-heading">How can I help you ?</h2>
-          <div id="chatlog">
-            ...
-          </div>
+          
 
           <form class="form">
             <div class="form-group">
               <input type="text" class="form-control" id="message" placeholder="Please ask me something">
               <p></p>
-              <div id="showresults"></div>
-              <a id="submit" class="btn btn-primary" onclick="javascript:submit_message()">Submit</a>
+              <input id="submitBtn" type="button" class="btn btn-primary" value="Submit"></input>
+              <input type="hidden" id="sessionId" value=""></input>
+              <input type="hidden" id="context" value=""></input>
               <a class="btn btn-outline"
                 href="https://assistant-chat-eu-de.watsonplatform.net/web/public/92cea4dd-3b3d-4cb8-8460-920e0fe78be3">...</a>
             </div>
+
+            <div id="chatlog">
+                ...
+              </div>
 
           </form>
         </div>
@@ -268,6 +239,63 @@
 
   <!-- Custom scripts for this template -->
   <script src="js/new-age.min.js"></script>
+
+  <script language="javascript">
+    $(document).ready(function () {
+      console.log("ready!");
+
+
+
+      var handler = function (event) {
+        if (event){
+          event.preventDefault();
+        }
+
+        var text = $('#message').val()
+        //var sessionId = $('#sessionId').val("")
+        $("#chatlog").html("<div class='badge'>...</div>");
+
+        $.ajax({
+          url: "/api/message",
+          data: {
+            text: text,
+            //sessionId: sessionId,  
+            //context: $('#context').val("")
+          },
+          type: "GET",
+          dataType: "json",
+          success: function (data) {
+            var response = data.output.generic[0].text;
+            //var sessionId = data.session_id;
+            //var context = data.context;
+
+            console.log(response)
+            $("#chatlog").html(response);
+            //$("#sessionId").val (sessionId);
+            $('#message').val("");
+          },
+          error: function (xhr, status) {
+            alert("Sorry, there was a problem!");
+          },
+          complete: function (xhr, status) {
+            //$('#chatlog').slideDown('slow')
+          }
+        });
+      };
+    
+
+
+    $('#submitBtn').click(handler);
+    $(document).on('keypress',function(e) {
+      if(e.which == 13) {
+        handler (e)
+      }
+    });
+
+    // initial submit without text (for welcome message)
+    handler()
+    });
+  </script>
 
 </body>
 
